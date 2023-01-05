@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Booking Form HTML Template</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    <style>
+        .template-option {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body style="background-color: rgb(173, 173, 173);">
+    <div class="container-fluid">
+        <% scrapped.data.data.forEach(item=>{%>
+
+            <div class="row result-card panel panel-default">
+                <div class="row panel-body">
+                    <div class="col-md-4 image-section">
+                        <div class="images">
+                            <img src="<%=item.cardPhotos[0].sizes.urlTemplate%>" alt="" style="width:180px; height:180px">
+                        </div>
+                        <div class="infomation row">
+                            <h4 class="text-center">
+                                <%=item.primaryInfo%>
+                            </h4>
+                            <h4 class="text-center">
+                                <%=item.secondaryInfo%>
+                            </h4>
+                            <h4 class="text-center">
+                                <%=item.accentedLabel%>
+                            </h4>
+                            <!-- <div><%=item.pri%></div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-8 detail-section row">
+                        <h3 class="title col-md-12 text-primary">
+                            <%=item.title%>
+                        </h3>
+                        <div class="col-md-6 price-pannel">
+                            <h4 class="list-inline">
+                                price:<h4 class="text-success"><%=item.priceForDisplay%></h4>
+                            </h4>
+                            <h4 class="list-inline">
+                                ex-price:<h4 class="text-danger" style="text-decoration-line: line-through;"><%=item.strikethroughPrice%></h4>
+                            </h4>
+                            <h4>
+                                <h4 class="bg-info text-center" ><%=item.priceDetails%></h4>
+                            </h4>
+                        </div>
+                        <div class="col-md-6 provider-pannel">
+                            <h4>
+                                <h3><%=item.provider%></h3>
+                            </h4>
+                            <h4 class="list-inline">
+                                Reviews:<h4 class="text-info"><%=item.bubbleRating.count%></h4>
+                            </h4>
+                            <h4 class="list-inline">
+                                Rating:<h4 class="text-info"><%=item.bubbleRating.rating%> </h4>  
+                            </h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%})%>
+    </div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
