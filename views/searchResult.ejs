@@ -220,28 +220,32 @@
                             <h4>Filter by:</h4>
                         </div>
                         <hr>
-                        <% scrapped.base_filters.forEach(item=>{%>
-                            <% if(item.id=="price_category") return; %>
-                                <div style="margin: 10px;">
-                                    <div class="title">
-                                    <h4><%=item.title%></h4>
-                                    </div>
-                                    <div class="row" style="font-size: 12px; font-weight: 400;">
-                                        <% item.categories.forEach(ct=>{%>
-                                            <div class="form-check col-md-11">
-                                        <input class="form-check-input filter_check" type="checkbox" name="categories_filter[]"  value="<%=ct.id%>" form="searchform"  <% if(ct.selected==1){%>checked<%}%>>
-                                        <label class="form-check-label" for="<%=ct.id%>" style="font-weight:400">
-                                                    <%=ct.name%>
-                                                </label>
+                            <div class="accordion">
+                                <% scrapped.base_filters.forEach(item=>{%>
+                                    <% if(item.id=="price_category") return; %>
+                                        <div class="accordion__item" style="margin: 10px;">
+                                            <div class="title accordion__title">
+                                                <div class="accordion__arrow"><span class="accordion__arrow-item ">+</span></div> 
+						                        <span class="accordion__title-text"><%=item.title%></span>
+                                                <!-- <h4><%=item.title%></h4> -->
                                             </div>
-                                            <div class="col-md-1">
-                                                <%=ct.count%>
+                                            <div class="row accordion__content" style="font-size: 12px; font-weight: 400; margin-left: 0px !important; margin-right: 0px !important; ">
+                                                <% item.categories.forEach(ct=>{%>
+                                                    <div class="form-check col-md-10">
+                                                        <input class="form-check-input filter_check" type="checkbox" name="categories_filter[]"  value="<%=ct.id%>" form="searchform"  <% if(ct.selected==1){%>checked<%}%>>
+                                                        <label class="form-check-label" for="<%=ct.id%>" style="font-weight:400">
+                                                                    <%=ct.name%>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <%=ct.count%>
+                                                    </div>
+                                            <%  })%>
                                             </div>
-                                    <%  })%>
-                                    </div>
-                                </div>
-                                <hr>
-                        <%  })%>
+                                        </div>
+                                <%  })%>
+                            </div>
+                        <hr>
                     </div>
                     <div class="col-md-9">
                         <% scrapped.result.forEach(item=>{%>
@@ -485,6 +489,26 @@
                 console.log($(this).siblings('input[name="search_type"]').val());
             })
         })
+
+        $(function() {
+	    //BEGIN
+            $(".accordion__title").on("click", function(e) {
+
+                e.preventDefault();
+                var $this = $(this);
+
+                if (!$this.hasClass("accordion-active")) {
+                    $(".accordion__content").slideUp(400);
+                    $(".accordion__title").removeClass("accordion-active");
+                    $('.accordion__arrow').removeClass('accordion__rotate');
+                }
+
+                $this.toggleClass("accordion-active");
+                $this.next().slideToggle();
+                $('.accordion__arrow',this).toggleClass('accordion__rotate');
+            });
+        //END
+        });
     </script>
 
 </body>
