@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Booking Form HTML Template</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+		<style>
+			.template-option{
+				display: none;
+			}
+		</style>
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="booking-cta">
+							<h1>Book your flight today</h1>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at
+							</p>
+						</div>
+					</div>
+					<div class="container col-md-7 col-md-offset-1">
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="pill" href="#hotel">Hotels</a></li>
+							<li><a data-toggle="pill" href="#flight">Flights</a></li>
+							<li><a data-toggle="pill" href="#vacation_rental">Vacation Rentals</a></li>
+							<li><a data-toggle="pill" href="#car_rental">Rental Cars</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="hotel" class="booking-form tab-pane fade in active">
+								<form method="get" action="/api/hotel/searchHotels/">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<span class="form-label">Hotel name or destination</span>
+												<input class="form-control search-loc" id="hotel" list="browsers">
+												<input type="hidden" name="geoId" class="hotel-input">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">From</span>
+												<input class="form-control" type="date" required name="checkIn">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">To</span>
+												<input class="form-control" type="date" required name="checkOut">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<span class="form-label">Adults (18+)</span>
+												<input class="form-control" name="numAdults">
+
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<span class="form-label">Children (0-17)</span>
+												<input class="form-control" name="numSeniors">
+
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<span class="form-label">Rooms</span>
+												<input class="form-control" name="numSeniors">
+
+											</div>
+										</div>
+									</div>
+									<div class="form-btn">
+										<button class="submit-btn" type="submit">Find Hotels</button>
+									</div>
+								</form>
+							</div>
+							<div class="booking-form tab-pane fade" id="flight">
+								<form method="get" action="/api/flight/searchflights/">
+									<div class="form-group">
+										<div class="form-checkbox intineraryType-check">
+											<label for="roundtrip">
+												<input type="radio" id="roundtrip" name="itineraryType"
+													value="ROUND_TRIP">
+												<span></span>Roundtrip
+											</label>
+											<label for="one-way">
+												<input type="radio" id="one-way" name="itineraryType" value="ONE_WAY">
+												<span></span>One way
+											</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">FLYING FROM</span>
+												<input class="form-control search-loc " id="flight" list="browsers"
+													name="sourceAirportCode">
+
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">FLYING TO</span>
+												<input class="form-control search-loc flight" id="flight"
+													list="browsers" name="sourceAirportCode">
+
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">Departing</span>
+												<input class="form-control" type="date" required name="date">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">Returning</span>
+												<input class="form-control" type="date" required name="returnDate">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<span class="form-label">Adults (18+)</span>
+												<input class="form-control" name="numAdults">
+
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<span class="form-label">Children (0-17)</span>
+												<input class="form-control" name="numSeniors">
+
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<span class="form-label">Travel class</span>
+												<select class="form-control" name="classOfService">
+													<option value="ECONOMY">Economy class</option>
+													<option value="BUSINESS">Business class</option>
+													<option value="FIRST">First class</option>
+												</select>
+
+											</div>
+										</div>
+									</div>
+									<div class="form-btn">
+										<button class="submit-btn" type="submit">Show flights</button>
+									</div>
+								</form>
+							</div>
+							<div class="booking-form tab-pane fade" id="vacation_rental">
+								<form method="get" action="/api/flight/searchflights/">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<span class="form-label">Where do you want to go?</span>
+												<input class="form-control search-loc " id="vacation" list="browsers"
+													name="sourceAirportCode">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">From</span>
+												<input class="form-control" type="date" required name="date">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">To</span>
+												<input class="form-control" type="date" required name="returnDate">
+											</div>
+										</div>
+									</div>
+									<div class="form-btn">
+										<button class="submit-btn" type="submit">find vacation rentals</button>
+									</div>
+								</form>
+							</div>
+							<div class="booking-form tab-pane fade" id="car_rental">
+								<form method="get" action="/api/flight/searchflights/">
+									<div class="form-group">
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<span class="form-label">Pickup location</span>
+												<input class="form-control search-loc" id="car" list="browsers"
+													name="geoId">
+
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">Pick up</span>
+												<input class="form-control" type="datetime-local" required
+													name="departure">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<span class="form-label">Drop off</span>
+												<input class="form-control" type="datetime-local" required
+													name="arrival">
+											</div>
+										</div>
+									</div>
+									<div class="form-btn">
+										<button class="submit-btn" type="submit">find rental cars</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<datalist id="browsers">
+					</datalist>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<option value="San Francisco" class="999302 template-option" >
+		<div class="EtzER">
+			<div class="DvEpD">
+				<div class="second-text">Emirate of Dubai, United Arab Emirates</div>
+			</div>
+		</div>
+	</option>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<script>
+	// function searchFlight() {
+	// 	let sourceAirport = $("#origin").val();
+	// 	let destinationAirport = $("#destination").val();
+	// 	let date = $('#departing').val();
+	// 	let itineraryType = $(".intineraryType-check input:checked").val();
+	// 	let sortOrder = "ML_BEST_VALUE";
+	// 	let numAdults = $("#numAdults").val();
+	// 	let numSeniors = $("#numSeniors").val();
+	// 	let classOfService = $("#classOfService").val();
+	// 	console.log(sourceAirport + "----" + destinationAirport + "----" + date + "----" + itineraryType + "----" + sortOrder + "----" + numAdults + "----" + numSeniors + "----" + classOfService);
+
+	// 	$.ajax({
+	// 		type: "GET",
+	// 		url: '/api/flight/searchflights/',
+	// 		data: { sourceAirport, destinationAirport, date, date, itineraryType, sortOrder, numAdults, numSeniors, classOfService },
+	// 		crossDomain: true,
+	// 		success: function (data) {
+	// 			console.log(data);
+	// 		},
+	// 		error: function (err) {
+	// 			console.log(err);
+	// 		}
+	// 	});
+	// }
+
+	$(document).ready(function () {
+		$('.search-loc').keydown(function () {
+			let category = $(this).attr('id');
+			let query = $(this).val();
+			if (query.length%3==0&&query.length!=0) {
+
+				$.ajax({
+					type: "GET",
+					url: "/api/" + category + "/searchlocation/",
+					data: { query },
+					crossDomain: true,
+					success: function (result) {
+						$('#browsers').empty();
+						console.log(result['data']);
+						result['data'].forEach(ele => {
+							let newOp=$("option.template-option").clone();
+							newOp.removeClass("template-option");
+							console.log(ele['title']);
+							formatted_title=ele['title'].replace('<b>',"");
+							formatted_title=formatted_title.replace('</b>',"");
+							newOp.val(formatted_title);
+							newOp.attr('class',ele['geoId']);
+							newOp.find('div.second-text').text(ele['secondaryText']);
+							// $("#browsers").append(newel);
+							newOp.appendTo("#browsers");
+						});
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+			}
+
+		});
+		$(".search-loc").change(function()
+		{
+			let value=$("#browsers").find('option[value="'+$(this).val()+'"]').attr("class");
+			$(this).siblings('input[type=hidden]').val(value);
+		})
+	})
+</script>
+
+</html>
