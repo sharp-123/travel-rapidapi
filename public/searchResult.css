@@ -123,3 +123,13 @@
 .accordion__item .accordion__arrow-item {
 	font-weight: 700;
 }
+
+.bk-price{
+    color: red;
+    text-align: right;
+}
+
+.os-price{
+    color: green;
+    text-align: right;
+}

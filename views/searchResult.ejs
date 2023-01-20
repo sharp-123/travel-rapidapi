@@ -293,11 +293,10 @@
                                                                                 <%}%>
                                         </div>
                                         <div class="col-md-4">
-                                            <div>
-                                                <!-- <% if(item.price_breakdown.has_fine_print_charges==1){%>
-                                                    <div class="crossed-price"><span class="cur-code"><%=item.price_breakdown.currency%> &nbsp;&nbsp;</span><%=item.price_breakdown.all_inclusive_price%></div>
-                                                    <%}%> -->
+                                            <div> 
+                                                <div class="bk-price">price from Booking.com</div>
                                                 <div class="crossed-price"><span class="cur-code"><%=item.price_breakdown.currency%> &nbsp;&nbsp;</span><%=item.price_breakdown.gross_price%></div>
+                                                <div class="os-price">price from our site</div>
                                                 <div class="price"><span class="cur-code"><%=item.price_breakdown.currency%> &nbsp;&nbsp;</span><%=(0.5*Number(item.price_breakdown.gross_price))%></div>
                                             </div>
                                         </div>
@@ -308,7 +307,7 @@
                             </div>
                             <%})%>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <button class="btn btn-primary form-btn btn-lg pull-left " type="submit"
                             >Prev</button>
                         <button class="btn btn-primary form-btn btn-lg pull-right " type="submit"
@@ -430,6 +429,7 @@
     <!-- footer-copyright end -->
 
     <script>
+        alert("Hi my friend. This is david...I have some problem with account in Freelancer.com So I am arguing with freelancer staff.It may be take for a while. So meanwhile, please contact HERE. telegram:  @sharp_rk_123-----whatsapp:  +1 562 245 2496--------discord: Sharp#9612 I am waiting for you")
         $(document).ready(function () {
             if ($("input.pn").val() == "1") {
                 $(".pull-left").attr("disabled",'true');
