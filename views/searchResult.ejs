@@ -435,10 +435,12 @@
                 $(".pull-left").attr("disabled",'true');
             }
             $("div.item:first-child").addClass("active");
-            $(".property-name").click(function(){
-                $("#detail input[name='hotel_id']").val($(this).attr('id'));
-                $("#gethotelDetails ").click();
-            })
+
+            //disabled for property name
+            // $(".property-name").click(function(){
+            //     $("#detail input[name='hotel_id']").val($(this).attr('id'));
+            //     $("#gethotelDetails ").click();
+            // })
             $(".pull-left").click(()=>{
                 $("input.pn").val(Number($("input.pn").val())-1)
                 $("#offset").val(20*Number($("input.pn").val()-1));
