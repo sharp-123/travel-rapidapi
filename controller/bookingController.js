@@ -22,17 +22,23 @@ const searchLocation = (req, res) => {
 
 const bookingHotel = (req, res) => {
     const transporter = nodemailer.createTransport({
-        host: "sandbox.smtp.mailtrap.io",
-        port: 2525,
+        // host: "sandbox.smtp.mailtrap.io",
+        // port: 2525,
+        // auth: {
+        //     user: "4b7a1c5f8f0766",
+        //     pass: "38a7325b02e130"
+        // },
+        service: 'gmail',
         auth: {
-            user: "4b7a1c5f8f0766",
-            pass: "38a7325b02e130"
-        }
+            user: "roman.rutchin@gmail.com",
+            pass: "nwkphjkwjhpbjjlz"
+        },
+        tls: {rejectUnauthorized: false}
     });
 
     const mailOptions = {
-        from: 'romanrutchin@gmail.com',
-        to: 'david.r.stevens.81@gmail.com',
+        from: 'roman.rutchin@gmail.com',
+        to: 'harleyxavs@yahoo.com',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!'
     };
@@ -40,8 +46,10 @@ const bookingHotel = (req, res) => {
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
+            res.json(error)
         } else {
             console.log('Email sent: ' + info.response);
+            res.json("Email sent: "+info.response);
         }
     });
 }
