@@ -7,7 +7,7 @@ const searchLocation = (req, res) => {
 		url: 'https://apidojo-booking-v1.p.rapidapi.com/locations/auto-complete',
 		params: { text: req.query.query, languagecode: 'en-us' },
 		headers: {
-			'X-RapidAPI-Key': '5c476d6342msh05ee9313efa0affp17029cjsnae85b77e1954',
+			'X-RapidAPI-Key': '8bdbbd0320mshe845806b673c1bep10c05fjsn383f4db31dab',
 			'X-RapidAPI-Host': 'apidojo-booking-v1.p.rapidapi.com'
 		}
 	};
@@ -38,7 +38,7 @@ const getHotelsFilter = (req, res) => {
 			travel_purpose: 'leisure'
 		},
 		headers: {
-			'X-RapidAPI-Key': '5c476d6342msh05ee9313efa0affp17029cjsnae85b77e1954',
+			'X-RapidAPI-Key': '8bdbbd0320mshe845806b673c1bep10c05fjsn383f4db31dab',
 			'X-RapidAPI-Host': 'apidojo-booking-v1.p.rapidapi.com'
 		}
 	};
@@ -74,7 +74,7 @@ const searchHotels = (req, res) => {
 			categories_filter: req.query.categories_filter.toString()
 		},
 		headers: {
-			'X-RapidAPI-Key': '5c476d6342msh05ee9313efa0affp17029cjsnae85b77e1954',
+			'X-RapidAPI-Key': '8bdbbd0320mshe845806b673c1bep10c05fjsn383f4db31dab',
 			'X-RapidAPI-Host': 'apidojo-booking-v1.p.rapidapi.com'
 		}
 	};
@@ -103,7 +103,7 @@ const getHotelDetails = (req, res) => {
 			units: 'imperial'
 		},
 		headers: {
-			'X-RapidAPI-Key': '5c476d6342msh05ee9313efa0affp17029cjsnae85b77e1954',
+			'X-RapidAPI-Key': '8bdbbd0320mshe845806b673c1bep10c05fjsn383f4db31dab',
 			'X-RapidAPI-Host': 'apidojo-booking-v1.p.rapidapi.com'
 		}
 	};

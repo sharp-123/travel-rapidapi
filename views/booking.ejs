@@ -89,15 +89,9 @@
     <!--Custom JS-->
     <script src="/public/assets/js/custom.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
-    <!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
 
 </head>
+
 <body>
 
     <!-- main-menu Start -->
@@ -146,10 +140,10 @@
 
     </header><!-- /.top-area-->
     <!-- main-menu End -->
+
     <!--packages start-->
-    
     <section id="pack" class="packages">
-        <div class="container-fluid">
+        <div class="container-fluid" style="width: 80%;">
             <div class="gallary-header text-center">
                 <h2>
                     special packages
@@ -250,10 +244,10 @@
                         <% scrapped.result.forEach(item=>{%>
                             <div class="col-md-12 col-sm-12">
                                 <div class="single-package-item" style="min-height:200px; display: flex; padding: 1%;">
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <img src="<%=item.main_photo_url.replace('square60','max300')%>" style="width: 200px; height: 200px;"/>
                                     </div>
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <div class="col-md-8">
                                             <div class="col-md-12 "><a id="<%=item.hotel_id%>" class="property-name"><%=item.hotel_name%></a>
                                                 <div class="rating" style="color: rgb(228, 218, 33); font-size: 18px;">
@@ -262,7 +256,7 @@
                                                             <%}%>
                                                     </div>
                                             </div>
-                                            <div class="col-md-12 address"><a class="address-b"><%=item.address%></a><a>&nbsp;<%=item.distance%><mark>km</mark> away from city center</a></div>
+                                            <div class="col-md-12 address"><a><%=item.address%>&nbsp;<%=item.distance%><mark>km</mark> away from city center</a></div>
                                         </div>
                                         <div class="col-md-4" style="padding: 0;">
                                             <div class="col-md-9">
@@ -307,11 +301,20 @@
                             <%})%>
                     </div>
                     <div class="col-md-12">
-                        <button class="btn btn-primary form-btn btn-lg pull-left prev" type="submit"
+                        <button class="btn btn-primary form-btn btn-lg pull-left " type="submit"
                             >Prev</button>
-                        <button class="btn btn-primary form-btn btn-lg pull-right next" type="submit"
+                        <button class="btn btn-primary form-btn btn-lg pull-right " type="submit"
                             >Next</button>
                     </div>
+                    <form action="/api/hotel/getHotelDetails" method="get" id="detail" style="display: none;">
+                        <input type="hidden" name="hotel_id">
+                        <input type="hidden" name="search_id" value="<%=scrapped.search_id%>">
+                        <input type="hidden" name="departure_date" value="<%=params.departure_date%>">
+                        <input type="hidden" name="arrival_date" value="<%=params.arrival_date%>">
+                        <input type="hidden" name="rec_guest_qty" value="<%=params.guest_qty%>">
+                        <input type="hidden" name="rec_room_qty" value="<%=params.room_qty%>">
+                        <button type="submit"  id="gethotelDetails"></button>
+                    </form>
 
                 </div>
                 <!--/.row-->
@@ -321,45 +324,7 @@
         <!--/.container-->
 
     </section>
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1 style="text-align: center;">Booking</h1>
-            <div class="booking-data">
-                <h3>Your email Address</h3>
-                <input class="form-control form-input" id="sender" type="email" style="width: 60%;" required/>
-                <h3>Booking Information</h3>
-                <div class="booking-detail">
-                    <div class="hotel-info">
-                        <div class="booking-name">Name:<span> Toykyo Agent</span></div>
-                        <div class="booking-address">Address:<span>Higashiueno 4-26-3</span> </div>
-                        <div class="booking-destination">Destination:<span><%=params.place_name%></span></div>
-                    </div>
-                    <div class="booking-info">
-                        <div class=" checkin-date">
-                            arrival-date:<span><%=params.arrival_date%></span>
-                        </div>
-                        <div class=" checkout-date">
-                            departure-date:<span><%=params.departure_date%></span>
-                        </div>
-                        <div class=" adults-num">
-                            Adults:<span><%=params.guest_qty%></span>
-                        </div>
-                        <div class=" children-num">
-                            Children:<span><%=params.children_qty%></span>
-                        </div>
-                        <div class=" room-num">
-                            Rooms:<span><%=params.room_qty%></span>
-                        </div>
-                    </div>
-                </div>
-                <h3>Your Message Here</h3>
-                <textarea id="message" style="width: 100%; min-height: 200px;" required></textarea>
-            </div>
-            <button class="btn btn-success form-btn btn-lg pull-right send-email">Send Email</button>
-        </div>
-    </div>
+
     <!--/.packages-->
     <!-- footer-copyright start -->
     <footer class="footer-copyright">
@@ -458,140 +423,7 @@
     <!-- footer-copyright end -->
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-         modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-        }
-        }
-        $(document).ready(function () {
-            if ($("input.pn").val() == "1") {
-                $(".pull-left").attr("disabled",'true');
-            }
-            $("div.item:first-child").addClass("active");
-
-            //disabled for property name
-            $(".property-name").click(function(){
-                $("#myModal .booking-name span ").text($(this).text());
-                $("#myModal .booking-address span ").text($(this).parent().next().find("a.address-b").text());
-                modal.style.display = "block";
-            })
-            $(".prev").click(()=>{
-                $("input.pn").val(Number($("input.pn").val())-1)
-                $("#offset").val(20*Number($("input.pn").val()-1));
-                $("#update").click();
-            })
-            $(".next").click(()=>{
-                $("#offset").val(20*Number($("input.pn").val()));
-                $("input.pn").val(Number($("input.pn").val())+1)
-                $("#update").click();
-            })
-            $(".send-email").click(function(){
-                if($("#sender").val()==""||$("#message").val()=="")
-                {
-                    alert("Please be sure that your email address and message are not empty!");
-                }
-                else
-                {
-                    let query={};
-                    query.sender=$("#sender").val();
-                    query.name=$(".booking-name span").text();
-                    query.address=$(".booking-address span").text();
-                    query.destination=$(".booking-destination span").text();
-                    query.message=$("#message").val();
-                    query.arrival=$("#in_date").val();
-                    query.departure=$("#out_date").val();
-                    query.adults=$("#adts").val();
-                    query.children=$("#chd").val();
-                    query.rooms=$("#rooms").val();
-                    console.log(query);
-                    $.ajax({
-                        type: "GET",
-                        url: "/api/booking/hotel",
-                        data: { query },
-                        crossDomain: true,
-                        success: function (result) {
-                            console.log(result);
-                        },
-                        error: function (err) {
-                            console.log(err);
-                        }
-                    });
-                }
-            })
-            $('.search-loc').keydown(function () {
-
-                let category = $(this).attr('id');
-                let query = $(this).val();
-                if (query.length % 3 == 0 && query.length != 0) {
-                    console.log("scraping start");
-                    $.ajax({
-                        type: "GET",
-                        url: "/api/" + category + "/searchlocation/",
-                        data: { query },
-                        crossDomain: true,
-                        success: function (result) {
-                            console.log(result);
-                            $('#browsers').empty();
-                            result.forEach(ele => {
-                                let newOp = $("option.template-option").clone();
-                                newOp.removeClass("template-option");
-                                newOp.val(ele['name']);
-                                newOp.attr('class', ele['dest_id']);
-                                newOp.find('div.second-text').text(ele['label']);
-                                newOp.find('input.search_type').val(ele['dest_type']);
-                                // $("#browsers").append(newel);
-                                newOp.appendTo("#browsers");
-                            });
-                        },
-                        error: function (err) {
-                            console.log(err);
-                        }
-                    });
-                }
-
-            });
-            $(".search-loc").change(function () {
-                let value = $("#browsers").find('option[value="' + $(this).val() + '"]').attr("class");
-                let s_type = $("#browsers").find('option[value="' + $(this).val() + '"] input[type=hidden]').val();
-                $(this).siblings('input[name="dest_ids"]').val(value);
-                $(this).siblings('input[name="search_type"]').val(s_type);
-                console.log($(this).siblings('input[name="dest_ids"]').val());
-                console.log($(this).siblings('input[name="search_type"]').val());
-            })
-        })
-
-        $(function() {
-	    //BEGIN
-            $(".accordion__title").on("click", function(e) {
-
-                e.preventDefault();
-                let $this = $(this);
-
-                if (!$this.hasClass("accordion-active")) {
-                    $(".accordion__content").slideUp(400);
-                    $(".accordion__title").removeClass("accordion-active");
-                    $('.accordion__arrow').removeClass('accordion__rotate');
-                }
-
-                $this.toggleClass("accordion-active");
-                $this.next().slideToggle();
-                $('.accordion__arrow',this).toggleClass('accordion__rotate');
-            });
-        //END
-        });
+    
     </script>
 
 </body>

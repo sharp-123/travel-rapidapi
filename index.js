@@ -5,6 +5,7 @@ const cors = require('cors');
 const hotelRouter = require('./router/hotel');
 const flightRouter = require('./router/flight');
 const vacationRouter = require('./router/vacation');
+const bookingRouter=require('./router/booking');
 const carRouter = require('./router/car');
 const path=require('path');
 
@@ -41,6 +42,7 @@ app.use('/api/hotel', hotelRouter);
 app.use('/api/flight', flightRouter);
 app.use('/api/vacation', vacationRouter);
 app.use('/api/car', carRouter);
+app.use('/api/booking',bookingRouter);
 
 // Handling Errors
 app.use((err, req, res, next) => {

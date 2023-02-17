@@ -1,23 +1,27 @@
-.property-name{
+.property-name {
     color: rgb(43, 43, 218);
     font-size: x-large;
     font-weight: 700;
 }
-.property-name:hover{
+
+.property-name:hover {
     color: rgb(86, 86, 172);
     font-size: x-large;
     font-weight: 800;
     cursor: pointer;
     transition: all 1s;
 }
-.address{
+
+.address {
     color: blueviolet;
 }
-.score-word{
+
+.score-word {
     color: #4f4b4b;
     font-size: large;
 }
-.review-score{
+
+.review-score {
     padding: 0;
     font-size: xx-large;
     color: white;
@@ -26,36 +30,42 @@
     box-shadow: 1px 1px 6px 1px grey;
     text-align: center;
 }
-.room-msg{
+
+.room-msg {
     color: black;
     font-size: 1.5rem;
     font-weight: 500;
 }
 
-.facility-info{
+.facility-info {
     color: rgb(33, 185, 33);
     font-size: large;
     font-weight: 400;
 }
-.facility-info-exp{
+
+.facility-info-exp {
     color: rgb(21, 135, 21);
     font-weight: 300;
 }
-.urgent-msg{
+
+.urgent-msg {
     color: rgb(242, 8, 8);
     font-size: large;
 }
+
 .crossed-price, .crossed-price span {
     color: red;
     text-decoration-line: line-through;
     text-align: right;
 }
-.price, .price span{
+
+.price, .price span {
     color: green;
     font-size: large;
-    text-align:right;
+    text-align: right;
 }
-.search-panel{
+
+.search-panel {
     width: 100%;
     display: flex;
     background-color: rgb(255, 166, 0);
@@ -63,73 +73,161 @@
     padding: 2%;
 }
 
-.form-div{
+.form-div {
     width: 80%;
     margin-left: 10%;
 }
 
 .accordion__item {
-	margin: 5px auto;
-}
-.accordion__item .accordion__title {
-	position: relative;
-	display: block;
-	padding: 13px 60px 15px 13px;
-	margin-bottom: 2px;
-	color: #202020;
-	font-size: 16px;
-	text-decoration: none;
-	background-color: #eaeaea;
-	border-radius: 3px;
-	-webkit-transition: background-color 0.2s;
-	transition: background-color 0.2s;
-  cursor: pointer;
-}
-.accordion__item .accordion__title:hover {
-	background-color: #e5e4e4;
-	transition: all 0.5s ease-out;
-}
-.accordion__item .accordion-active {
-	background-color: #e5e4e4;
-}
-.accordion__item .accordion__title .accordion__arrow {
-	position: absolute;
-	top: 13px; right: 10px;
-	display: inline-block;
-	vertical-align: middle;
-	width: 30px;
-	height: 30px;
-	text-align: center;
-	color: #fff;
-	line-height: 30px;
-	font-size: 20px;
-	font-weight: 700;
-	margin-right: 5px;
-	background-color: #c9c9c9;
-	border-radius: 50%;
-	-webkit-transition: all 0.2s ease-out;
-	transition: all 0.2s ease-out;
-}
-.accordion__item .accordion__rotate {
-	transform: rotate(225deg);
-}
-.accordion__item .accordion__content {
-	padding: 30px;
-	margin-bottom: 2px;
-	font-size: 14px;
-	display: none;
-	background-color: #f3f3f3;
-}
-.accordion__item .accordion__arrow-item {
-	font-weight: 700;
+    margin: 5px auto;
 }
 
-.bk-price{
+.accordion__item .accordion__title {
+    position: relative;
+    display: block;
+    padding: 13px 60px 15px 13px;
+    margin-bottom: 2px;
+    color: #202020;
+    font-size: 16px;
+    text-decoration: none;
+    background-color: #eaeaea;
+    border-radius: 3px;
+    -webkit-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.accordion__item .accordion__title:hover {
+    background-color: #e5e4e4;
+    transition: all 0.5s ease-out;
+}
+
+.accordion__item .accordion-active {
+    background-color: #e5e4e4;
+}
+
+.accordion__item .accordion__title .accordion__arrow {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 5px;
+    background-color: #c9c9c9;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.accordion__item .accordion__rotate {
+    transform: rotate(225deg);
+}
+
+.accordion__item .accordion__content {
+    padding: 30px;
+    margin-bottom: 2px;
+    font-size: 14px;
+    display: none;
+    background-color: #f3f3f3;
+}
+
+.accordion__item .accordion__arrow-item {
+    font-weight: 700;
+}
+
+.bk-price {
     color: red;
     text-align: right;
 }
 
-.os-price{
+.os-price {
     color: green;
     text-align: right;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 200px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 50px 3%;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.booking-data>*{
+    margin: 10px 0;
+}
+
+.booking-detail {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.booking-detail div {
+    font-size: large;
+    color: green;
+}
+
+.booking-detail div>span{
+    font-size: larger;
+    font-weight: bold;
+    color: blue;
+}
+
+.send-email{
+    margin-bottom: 10px ;
+}
+
+.hotel-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
 }
