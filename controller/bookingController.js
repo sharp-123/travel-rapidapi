@@ -49,7 +49,7 @@ const bookingHotel = (req, res) => {
             res.json(error)
         } else {
             console.log('Email sent: ' + info.response);
-            res.json("Email sent: "+info.response);
+            res.json("Email sent: "+info);
         }
     });
 }
